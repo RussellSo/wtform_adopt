@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block main %}
+
+<h1>All Pets</h1>
+
+<div class="pet_list">
+    <ul>
+        {% for pets in all_pets %}
+
+        <li>
+            <img style='height:100px; width:100px' src={{pets.photo_url}} alt="photo">
+            Name: {{pets.name}} -
+            <b> Adoption Status:
+                {% if pets.available %}
+                Available
+                {% else %}
+                Unavailabe
+                {% endif %}
+            </b>
+            <a href="/{{pets.id}}">Edit</a>
+        </li>
+
+        {% endfor %}
+    </ul>
+
+    <a class="btn btn-success" href="/add">Add A Pet</a>
+</div>
+
+{% endblock %}
